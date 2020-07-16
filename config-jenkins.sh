@@ -3,11 +3,13 @@
 # Jenkins
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-sudo add-apt-repository ppa:webupd8team/java -y
+#sudo add-apt-repository ppa:webupd8team/java -y
+
 sudo apt-get update -y
 #echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
 #sudo apt-get install oracle-java8-installer -y
-sudo apt-get install openjdk-8-jdk -y
+sudo apt install default-jdk -y
+
 sudo apt-get install jenkins -y
 
 # Docker
@@ -31,9 +33,9 @@ curl -sL https://aka.ms/InstallAzureSLIDeb | sudo bash
 cd /tmp/
 sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 #sudo curl -kLO https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
-chmod +x ./kubectl
+sudo chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
-sudo mv ./kubectl /usr/bin/kubectl
+#sudo mv ./kubectl /usr/bin/kubectl
 # Configure access
 sudo usermod -aG docker jenkins
 sudo usermod -aG docker azureuser
